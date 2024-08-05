@@ -3,8 +3,8 @@
 public class Dish
 {
     public int Id {get; set;}
-    public string Name {get; set;} = String.Empty;
-    public string ImgUrl {get; set;} = String.Empty;
+    public string Name {get; set;} = null!;
+    public string ImgUrl {get; set;} = null!;
     public double Price {get; set;}
 
     // navigation properties
