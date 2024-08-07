@@ -1,7 +1,13 @@
+using FoodMenuApp.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<FoodMenuContext>(options => {
+    options.UseSqlServer("Server=DESKTOP-E1M122C;Database=FccFoodMenuDB;Trusted_Connection=True;");
+});
 
 var app = builder.Build();
 

@@ -5,10 +5,20 @@ namespace FoodMenuApp.Data;
 
 public class FoodMenuContext : DbContext
 {
+    public DbSet<Dish> Dishes {get; set;}
+    public DbSet<Ingredient> Ingredients {get; set;}
+    public DbSet<DishIngredient> DishIngredients {get; set;}
+
     public FoodMenuContext( DbContextOptions<FoodMenuContext> dbContextOptions ) : base(dbContextOptions)
     {
 
     }
+
+    // sql server configured in program.cs
+    // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    // {
+    //     optionsBuilder.UseSqlServer(@"Data Source=");
+    // }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -74,7 +84,4 @@ public class FoodMenuContext : DbContext
         base.OnModelCreating(modelBuilder);
     }
 
-    public DbSet<Dish> Dishes {get; set;}
-    public DbSet<Ingredient> Ingredients {get; set;}
-    public DbSet<DishIngredient> DishIngredients {get; set;}
 }
