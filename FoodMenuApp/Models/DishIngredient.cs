@@ -3,10 +3,10 @@
 public class DishIngredient
 {
     public int Id { get; set; }
-    public Dish Dish {get; set;} = null!;
-    public int DishId {get; set;}
-
+    // public Dish Dish {get; set;} = null!;
+    //public Ingredient Ingredient {get; set;} = null!;
+    
     // navigation properties
-    public Ingredient Ingredient {get; set;} = null!;
+    public int DishId {get; set;}
     public int IngredientId {get; set;}
 }

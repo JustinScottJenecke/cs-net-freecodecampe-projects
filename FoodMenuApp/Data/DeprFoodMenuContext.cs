@@ -1,15 +1,17 @@
-﻿using FoodMenuApp.Models;
+﻿/*
+
+using FoodMenuApp.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodMenuApp.Data;
 
-public class FoodMenuContext : DbContext
+public class DeprFoodMenuContext : DbContext
 {
     public DbSet<Dish> Dishes {get; set;}
     public DbSet<Ingredient> Ingredients {get; set;}
     public DbSet<DishIngredient> DishIngredients {get; set;}
 
-    public FoodMenuContext( DbContextOptions<FoodMenuContext> dbContextOptions ) : base(dbContextOptions)
+    public DeprFoodMenuContext( DbContextOptions<FoodMenuContext> dbContextOptions ) : base(dbContextOptions)
     {
 
     }
@@ -22,11 +24,19 @@ public class FoodMenuContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Explicit data mapping 
-        modelBuilder.Entity<Dish>()
-            .HasMany(dish => dish.Ingredients)
-            .WithMany(ingredient => ingredient.Dishes)
-            .UsingEntity<DishIngredient>();
+        // === Relational Mapping ===
+        // specify many to many relationship between Dish and Ingredient
+        modelBuilder.Entity<DishIngredient>().HasKey(di => new
+        {
+            di.DishId,
+            di.IngredientId
+        });
+
+        // specify relationship between Dish and DishIngredient
+        // modelBuilder.Entity<DishIngredient>().HasOne(d => d.Dish).WithMany(di => di.DishIngredients).HasForeignKey(d => d.Dish);
+        
+        // specify relationship between Ingredient and DishIngredient
+        // modelBuilder.Entity<DishIngredient>().HasOne(i => i.Ingredient).WithMany(di => di.DishIngredients).HasForeignKey(i => i.Ingredient);
 
         // === Data Seeding ===
 
@@ -60,21 +70,22 @@ public class FoodMenuContext : DbContext
 
         modelBuilder.Entity<DishIngredient>().HasData(
             // pizza
-            new DishIngredient {Id = 1, DishId = 1, IngredientId = 1},
-            new DishIngredient {Id = 2, DishId = 1, IngredientId = 2},
-            new DishIngredient {Id = 3, DishId = 1, IngredientId = 3},
-            new DishIngredient {Id = 4, DishId = 1, IngredientId = 4},
-            new DishIngredient {Id = 5, DishId = 1, IngredientId = 5},
+            new DishIngredient {DishId = 1, IngredientId = 1},
+            new DishIngredient {DishId = 1, IngredientId = 2},
+            new DishIngredient {DishId = 1, IngredientId = 3},
+            new DishIngredient {DishId = 1, IngredientId = 4},
+            new DishIngredient {DishId = 1, IngredientId = 5},
 
             // cheese burger
-            new DishIngredient {Id = 6, DishId = 2, IngredientId = 1},
-            new DishIngredient {Id = 7,DishId = 2, IngredientId = 6},
-            new DishIngredient {Id = 8 ,DishId = 2, IngredientId = 7},
-            new DishIngredient {Id = 9,DishId = 2, IngredientId = 8},
-            new DishIngredient {Id = 10,DishId = 2, IngredientId = 2}
+            new DishIngredient {DishId = 2, IngredientId = 1},
+            new DishIngredient {DishId = 2, IngredientId = 6},
+            new DishIngredient {DishId = 2, IngredientId = 7},
+            new DishIngredient {DishId = 2, IngredientId = 8},
+            new DishIngredient {DishId = 2, IngredientId = 2}
         );
 
         base.OnModelCreating(modelBuilder);
     }
 
 }
+*/

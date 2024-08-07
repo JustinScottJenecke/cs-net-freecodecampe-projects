@@ -8,5 +8,5 @@ public class Dish
     public double Price {get; set;}
 
     // navigation properties
-    public List <DishIngredient>? DishIngredients {get; set;}
+    public List <Ingredient>? Ingredients {get; set;}
 }

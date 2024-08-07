@@ -6,5 +6,5 @@ public class Ingredient
     public string Name { get; set; } = null!;
 
     // navigation properties
-    public List <DishIngredient>? DishIngredients {get; set;}
+    public List <Dish>? Dishes {get; set;}
 }
