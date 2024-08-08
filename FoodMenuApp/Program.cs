@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<FoodMenuContext>(options => {
-    options.UseSqlServer("Server=DESKTOP-E1M122C;Database=FccFoodMenuDB;Trusted_Connection=True;");
+    options.UseSqlServer("Server=DESKTOP-E1M122C; Database=FccFoodMenuDB; Trusted_Connection=True; TrustServerCertificate=True;");
 });
 
 var app = builder.Build();
