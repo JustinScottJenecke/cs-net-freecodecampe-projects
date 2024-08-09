@@ -1,0 +1,23 @@
+@model List<FoodMenuApp.Models.Dish>
+
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <div class="container">
+        <ul class="row">
+            @foreach(var dish in Model) {
+                <li class="col-6">
+                    <h5><div>@dish.Name</div></h5>
+                    <div>@dish.Price</div>
+                    <div>@dish.ImgUrl</div>
+                </li>                
+            }
+        </ul>
+    </div>
+
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
